@@ -16,5 +16,7 @@
     <string name="faltapassword">Ingrese Password</string>
     <string name="Accesocorrecto">Acceso Correcto</string>
     <string name="Accesoincorrecto">Usuario o contraseña Incorrecto</string>
+    <string name="logout">Log Out</string>
+    <string name="acercade">Acerca de la APP</string>
 
 </resources>
