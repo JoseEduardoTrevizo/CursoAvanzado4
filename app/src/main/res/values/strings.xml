@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CursoAvanzado</string>
+
+    <string name="cargando">Cargando...</string>
+    <string name="Versionapp">Version:</string>
+    <string name="Descripciondecontenido">Logo de la app</string>
+    <string name="Descripciondecontenidofondo">Imagenfondo</string>
+    <string name="Preparando">Preparando aplicacion</string>
+    <string name="Espera">Un momento porfavor</string>
+    <string name="Usuario">Usuario:</string>
+    <string name="Password">Password:</string>
+    <string name="Usuarioingresado">Ingrese Usuario</string>
+    <string name="Passwordingresado">Ingrese Password</string>
+    <string name="Boton">Ingresar</string>
+    <string name="faltausuario">Ingrese Usuario</string>
+    <string name="faltapassword">Ingrese Password</string>
+    <string name="Accesocorrecto">Acceso Correcto</string>
+    <string name="Accesoincorrecto">Usuario o contraseña Incorrecto</string>
+
+</resources>
