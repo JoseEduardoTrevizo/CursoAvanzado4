@@ -18,5 +18,11 @@
     <string name="Accesoincorrecto">Usuario o contraseña Incorrecto</string>
     <string name="logout">Log Out</string>
     <string name="acercade">Acerca de la APP</string>
+    <string name="nombreappdialogo">Curzo Avanzado Android</string>
+    <string name="desarrollador">By: Ing.Jose Eduardo Trevizo Pizano</string>
+    <string name="versionappdialogo">Version:</string>
+    <string name="Empresa">Control PI</string>
+    <string name="siguemefb">Sigueme en Facebook: \https://www.facebook.com/edwardo.trevizopizano/</string>
+    <string name="llamar">Llamar al Desarrollador</string>
 
 </resources>
