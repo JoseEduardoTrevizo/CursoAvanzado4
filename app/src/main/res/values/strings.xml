@@ -24,5 +24,7 @@
     <string name="Empresa">Control PI</string>
     <string name="siguemefb">Sigueme en Facebook: \https://www.facebook.com/edwardo.trevizopizano/</string>
     <string name="llamar">Llamar al Desarrollador</string>
+    <string name="conocederPermisos">Conceder Permisos</string>
+    <string name="alertapermisos">Necesita conceder permisos</string>
 
 </resources>
