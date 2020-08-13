@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import java.util.Objects;
 
+import static com.example.cursoavanzado.VariablesGlobales.codigoQR;
 import static com.example.cursoavanzado.metodosglobales.obtenerversionApp;
 
 
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     Toolbar mainToolbar;
     Menu menuActivity;
     Context context;
+    Button btnQR;
+    TextView txtcodigoQR;
+
     //Objetos
     AlertDialog acercaDedialogo;
 
@@ -36,11 +40,28 @@ public class MainActivity extends AppCompatActivity {
         configuracionesIniciales();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        btnQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(context,activity_qr.class));
+            }
+        });
+        if(!codigoQR.isEmpty()){
+        String codigoLeido=getString(R.string.codigoescaneado)+""+codigoQR;
+        txtcodigoQR.setText(codigoLeido);
+        }
+    }
+
     private void configuracionesIniciales() {
         mainToolbar=findViewById(R.id.toolbarMain);
         setSupportActionBar(mainToolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         context= MainActivity.this;
+        btnQR= findViewById(R.id.btn_leerQR);
+        txtcodigoQR=findViewById(R.id.txt_QR);
     }
 /*
 Infla la vista del menu que dise;amos (main menu)
