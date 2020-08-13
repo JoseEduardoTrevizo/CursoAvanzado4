@@ -28,5 +28,14 @@
     <string name="alertapermisos">Necesita conceder permisos</string>
     <string name="leerqr">Leer Codigo QR</string>
     <string name="codigoescaneado">Codigo QR escaneado:</string>
+    <string name="nombre">Nombre</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="correo">Correo</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="cualquiera">Cualquiera</string>
+    <string name="admi">Administrador</string>
+    <string name="predeterminado">Predeterminado</string>
+    <string name="adduser">Agregar Usuario</string>
 
 </resources>
