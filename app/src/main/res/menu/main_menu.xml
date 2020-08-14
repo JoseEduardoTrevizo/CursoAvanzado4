@@ -7,5 +7,8 @@
     <item
         android:id="@+id/AcercaDeAPP"
         android:title="@string/acercade"/>
+    <item
+        android:id="@+id/agregarUsuario"
+        android:title="Add User"/>
 
 </menu>

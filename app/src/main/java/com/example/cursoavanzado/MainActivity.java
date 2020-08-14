@@ -87,7 +87,9 @@ ademas se iguala el menuActivity al menu de la vista inflada
             case R.id.AcercaDeAPP:
                 mostrarCuadroDialogoAcercaDe();
                 break;
-
+            case R.id.agregarUsuario:
+                startActivity(new Intent(context,AgregarUsuarioActivity.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

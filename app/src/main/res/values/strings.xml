@@ -37,5 +37,10 @@
     <string name="admi">Administrador</string>
     <string name="predeterminado">Predeterminado</string>
     <string name="adduser">Agregar Usuario</string>
+    <string name="userapp">Usuaros de la APP</string>
+    <string name="eduardo">Eduardo</string>
+    <string name="correolist">Edwardo_tp@hotmail.com</string>
+    <string name="id">ID:</string>
+    <string name="rol">Usuario Rol</string>
 
 </resources>

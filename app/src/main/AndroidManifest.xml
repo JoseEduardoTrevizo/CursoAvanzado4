@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AgregarUsuarioActivity"></activity>
+        <activity android:name=".UsuariosActivity"></activity>
+        <activity android:name=".AgregarUsuarioActivity" />
         <activity android:name=".activity_qr" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
