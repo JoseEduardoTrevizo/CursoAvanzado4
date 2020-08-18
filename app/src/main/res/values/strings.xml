@@ -42,5 +42,7 @@
     <string name="correolist">Edwardo_tp@hotmail.com</string>
     <string name="id">ID:</string>
     <string name="rol">Usuario Rol</string>
+    <string name="versuser">Ver Usuarios</string>
+    <string name="imglistitemgenero">item de genero</string>
 
 </resources>

@@ -15,11 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Objects;
 
 import static com.example.cursoavanzado.VariablesGlobales.codigoQR;
+import static com.example.cursoavanzado.VariablesGlobales.usuariosApp;
 import static com.example.cursoavanzado.metodosglobales.obtenerversionApp;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -90,6 +93,13 @@ ademas se iguala el menuActivity al menu de la vista inflada
             case R.id.agregarUsuario:
                 startActivity(new Intent(context,AgregarUsuarioActivity.class));
                 break;
+            case R.id.VerusuariosApp:
+                if (usuariosApp==null){
+                    Toast.makeText(context,"No hay usuarios",Toast.LENGTH_SHORT).show();
+                }else {
+                    startActivity(new Intent(context, UsuariosActivity.class));
+                    break;
+                }
         }
         return super.onOptionsItemSelected(item);
     }

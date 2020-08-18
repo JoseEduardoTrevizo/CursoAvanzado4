@@ -8,6 +8,9 @@
         android:id="@+id/AcercaDeAPP"
         android:title="@string/acercade"/>
     <item
+        android:id="@+id/VerusuariosApp"
+        android:title="@string/versuser"/>
+    <item
         android:id="@+id/agregarUsuario"
         android:title="Add User"/>
 

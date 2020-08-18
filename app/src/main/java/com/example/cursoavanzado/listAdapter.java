@@ -24,7 +24,7 @@ public class listAdapter extends ArrayAdapter<Usuario> {
         super(context, resource, textViewResourceId, objects);
         this.context= context;
         this.layaoutID= resource;
-        this. usuarios= new ArrayList<>(objects);
+        usuarios= new ArrayList<>(objects);
 
     }
 
@@ -41,29 +41,31 @@ public class listAdapter extends ArrayAdapter<Usuario> {
             holder.imgIcono=convertView.findViewById(R.id.img_listitem_genero);
             holder.txtnombre=convertView.findViewById(R.id.txtlistitem_nombre);
             holder.txtcorreo=convertView.findViewById(R.id.txtlistitem_correo);
-            holder.txtID=convertView.findViewById(R.id.txtlistitem_correo);
+            holder.txtID=convertView.findViewById(R.id.txtlistitem_id);
             holder.txtrol=convertView.findViewById(R.id.txtlistitem_rol);
 
+            convertView.setTag(holder);
         }else{
-            holder=(ViewHolder)convertView.getTag();
+            holder = (ViewHolder)convertView.getTag();
         }
         Usuario usuario=usuarios.get(position);
         if (usuario.getGenero().equals("Masculino")){
-                        holder.imgIcono.setImageResource(R.mipmap.genderfluid);
+            holder.imgIcono.setImageResource(R.mipmap.men);
         }else  if (usuario.getGenero().equals("Femenino")){
             holder.imgIcono.setImageResource(R.mipmap.woman);
-        }else {
+        }else{
             holder.imgIcono.setImageResource(R.mipmap.male);
         }
         holder.txtnombre.setText(usuario.getNombre());
         holder.txtcorreo.setText(usuario.getCorreo());
         holder.txtrol.setText(usuario.getRol());
-        holder.txtID.setText(usuario.getId());
+        holder.txtID.setText(String.valueOf(usuario.getId()));
 
         return convertView;
     }
-    public class ViewHolder{
+    public static class ViewHolder{
         ImageView imgIcono;
+
         TextView txtnombre, txtcorreo,txtID,txtrol;
     }
 }

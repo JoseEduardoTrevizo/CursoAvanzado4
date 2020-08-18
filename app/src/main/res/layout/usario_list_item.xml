@@ -23,13 +23,14 @@
 
         <ImageView
             android:id="@+id/img_listitem_genero"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="59dp"
+            android:layout_height="49dp"
+            android:contentDescription="@string/imglistitemgenero"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline41"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/genderfluid" />
+            app:srcCompat="@mipmap/male" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline42"
