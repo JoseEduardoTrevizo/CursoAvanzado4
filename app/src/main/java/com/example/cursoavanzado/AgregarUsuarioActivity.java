@@ -101,15 +101,12 @@ public class AgregarUsuarioActivity extends AppCompatActivity {
     }
 
     private void agregarusuario(String nombre,String password,String correo,String sexo,String rol){
-    if (usuariosApp==null){
-        usuariosApp = new ArrayList<>();//Inicializamos el arreglo
-        usuariosApp.add(new Usuario(id,nombre,password,sexo,rol,correo));
-        id++;//incrementa la variable id en 1
+    //TODO GUARDAR USUARIOS EN LA BASE DE DATOS
         mostrarToast("Usuario agregado correctamente!!!");
         startActivity(new Intent(context,MainActivity.class));
     }
 
-    }
+
 
     private void configuracionesIniciales(){
         context = AgregarUsuarioActivity.this;

@@ -7,4 +7,5 @@ public class VariablesGlobales {
     public static  String passwordTemporal= "soloyo";
     public static  String codigoQR="";
     public static ArrayList<Usuario>usuariosApp;
+    public static String LOG_TAG= "Depuracion";
 }
