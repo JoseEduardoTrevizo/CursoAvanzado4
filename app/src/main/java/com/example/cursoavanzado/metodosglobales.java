@@ -1,5 +1,6 @@
 package com.example.cursoavanzado;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -40,5 +41,16 @@ public class metodosglobales {
         }
         cursor.close();
     }
-
+    public  static  void agregarusuarioaBasedeDatos(Context context, Usuario usuario){
+        SQLiteDatabase database;
+        usuariosDB usuariosDB= new usuariosDB(context);
+        database =usuariosDB.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(usuriosContrato.usuariosColumnas.NOMBRE,usuario.getNombre());
+        cv.put(usuriosContrato.usuariosColumnas.PASSWORD,usuario.getPassword());
+        cv.put(usuriosContrato.usuariosColumnas.GENERO,usuario.getGenero());
+        cv.put(usuriosContrato.usuariosColumnas.ROL,usuario.getRol());
+        cv.put(usuriosContrato.usuariosColumnas.CORREO,usuario.getCorreo());
+        database.insert(usuriosContrato.usuariosColumnas.TABLE_NAME,null,cv);
+    }
 }

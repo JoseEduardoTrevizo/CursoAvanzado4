@@ -8,4 +8,6 @@ public class VariablesGlobales {
     public static  String codigoQR="";
     public static ArrayList<Usuario>usuariosApp;
     public static String LOG_TAG= "Depuracion";
+    public static int duraciontareaAsincrona=5;
+    public static String telefonodaniel="tel:+526141156086";
 }

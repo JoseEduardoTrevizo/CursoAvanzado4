@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.util.Linkify;
 import android.view.Menu;
@@ -20,7 +22,9 @@ import android.widget.Toast;
 import java.util.Objects;
 
 import static com.example.cursoavanzado.VariablesGlobales.codigoQR;
+import static com.example.cursoavanzado.VariablesGlobales.telefonodaniel;
 import static com.example.cursoavanzado.VariablesGlobales.usuariosApp;
+import static com.example.cursoavanzado.metodosglobales.leerBaseDeDatos;
 import static com.example.cursoavanzado.metodosglobales.obtenerversionApp;
 
 
@@ -94,15 +98,30 @@ ademas se iguala el menuActivity al menu de la vista inflada
                 startActivity(new Intent(context,AgregarUsuarioActivity.class));
                 break;
             case R.id.VerusuariosApp:
-                if (usuariosApp==null){
+                leerBaseDeDatos(context);
+                if (usuariosApp.size()==0){
                     Toast.makeText(context,"No hay usuarios",Toast.LENGTH_SHORT).show();
                 }else {
                     startActivity(new Intent(context, UsuariosActivity.class));
                     break;
                 }
+            case R.id.lanzarnotificacion:
+                tareaAsincrona tA=new tareaAsincrona(context);
+                tA.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                break;
+            case R.id.realizarllamada:
+                realizarllamada();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void realizarllamada(){
+        Uri call= Uri.parse(telefonodaniel);
+        Intent phoneIntent= new Intent(Intent.ACTION_CALL,call);
+        context.startActivity(phoneIntent);
+    }
+
 
     private void mostrarCuadroDialogoAcercaDe() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

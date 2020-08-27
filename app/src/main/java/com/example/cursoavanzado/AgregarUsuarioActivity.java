@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import static com.example.cursoavanzado.VariablesGlobales.usuariosApp;
+import static com.example.cursoavanzado.metodosglobales.agregarusuarioaBasedeDatos;
 
 public class AgregarUsuarioActivity extends AppCompatActivity {
 ////////////////Vistas////////////////
@@ -101,7 +102,8 @@ public class AgregarUsuarioActivity extends AppCompatActivity {
     }
 
     private void agregarusuario(String nombre,String password,String correo,String sexo,String rol){
-    //TODO GUARDAR USUARIOS EN LA BASE DE DATOS
+        Usuario user=new Usuario(0,nombre,password,sexo,rol,correo);
+        agregarusuarioaBasedeDatos(context,user);
         mostrarToast("Usuario agregado correctamente!!!");
         startActivity(new Intent(context,MainActivity.class));
     }

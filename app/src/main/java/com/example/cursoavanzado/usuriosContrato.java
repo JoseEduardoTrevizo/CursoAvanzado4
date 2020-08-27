@@ -10,6 +10,6 @@ public class usuriosContrato {
         public static final String ROL= "ROL";
         public static final String CORREO= "CORREO";
 
-        public static final String TABLE_NAME= "USUARIOS TABLE";
+        public static final String TABLE_NAME= "USUARIOS_TABLE";
     }
 }

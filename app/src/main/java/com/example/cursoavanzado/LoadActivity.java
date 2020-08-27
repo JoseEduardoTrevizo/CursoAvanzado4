@@ -15,6 +15,7 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static android.Manifest.permission.CALL_PHONE;
 import static android.Manifest.permission.CAMERA;
 import static com.example.cursoavanzado.metodosglobales.obtenerversionApp;
 
@@ -28,6 +29,7 @@ public class LoadActivity extends AppCompatActivity {
 Context context;
 Timer primerTimer,segundoTimer;
 boolean permisoCamara= false;
+boolean permisoLlamadas= false;
 /////////////////////////////////////////////////////////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +60,11 @@ boolean permisoCamara= false;
 
     private void revisarPermisos(){
     permisoCamara= checkSelfPermission(CAMERA)== PackageManager.PERMISSION_GRANTED;
-    if (permisoCamara){
+    permisoLlamadas=checkSelfPermission(CALL_PHONE)==PackageManager.PERMISSION_GRANTED;
+    if (permisoCamara&&permisoLlamadas){
         setprimerTimer(3000);
         }else {
-        requestPermissions(new String[]{CAMERA},25);
+        requestPermissions(new String[]{CAMERA,CALL_PHONE},25);
         }
     }
 
@@ -70,7 +73,8 @@ boolean permisoCamara= false;
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode==25){
             permisoCamara= checkSelfPermission(CAMERA)== PackageManager.PERMISSION_GRANTED;
-            if(permisoCamara){
+            permisoLlamadas=checkSelfPermission(CALL_PHONE)==PackageManager.PERMISSION_GRANTED;
+            if(permisoCamara&&permisoLlamadas){
                 setprimerTimer(3000);
             }else{
                 txtinfo.setText(getString(R.string.alertapermisos));
