@@ -10,4 +10,6 @@ public class VariablesGlobales {
     public static String LOG_TAG= "Depuracion";
     public static int duraciontareaAsincrona=5;
     public static String telefonodaniel="tel:+526141156086";
+    public static Double Latitude= null;
+    public static Double Longitud= null;
 }

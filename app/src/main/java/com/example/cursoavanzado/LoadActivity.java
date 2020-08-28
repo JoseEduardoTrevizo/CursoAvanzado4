@@ -15,6 +15,7 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.CALL_PHONE;
 import static android.Manifest.permission.CAMERA;
 import static com.example.cursoavanzado.metodosglobales.obtenerversionApp;
@@ -30,6 +31,9 @@ Context context;
 Timer primerTimer,segundoTimer;
 boolean permisoCamara= false;
 boolean permisoLlamadas= false;
+boolean permisoUbicacion= false;
+
+
 /////////////////////////////////////////////////////////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +65,11 @@ boolean permisoLlamadas= false;
     private void revisarPermisos(){
     permisoCamara= checkSelfPermission(CAMERA)== PackageManager.PERMISSION_GRANTED;
     permisoLlamadas=checkSelfPermission(CALL_PHONE)==PackageManager.PERMISSION_GRANTED;
-    if (permisoCamara&&permisoLlamadas){
+        permisoUbicacion=checkSelfPermission(ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED;
+    if (permisoCamara&&permisoLlamadas&&permisoUbicacion){
         setprimerTimer(3000);
         }else {
-        requestPermissions(new String[]{CAMERA,CALL_PHONE},25);
+        requestPermissions(new String[]{CAMERA,CALL_PHONE,ACCESS_FINE_LOCATION},25);
         }
     }
 
@@ -74,7 +79,8 @@ boolean permisoLlamadas= false;
         if (requestCode==25){
             permisoCamara= checkSelfPermission(CAMERA)== PackageManager.PERMISSION_GRANTED;
             permisoLlamadas=checkSelfPermission(CALL_PHONE)==PackageManager.PERMISSION_GRANTED;
-            if(permisoCamara&&permisoLlamadas){
+            permisoUbicacion=checkSelfPermission(ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED;
+            if(permisoCamara&&permisoLlamadas&&permisoUbicacion){
                 setprimerTimer(3000);
             }else{
                 txtinfo.setText(getString(R.string.alertapermisos));

@@ -1,12 +1,15 @@
 package com.example.cursoavanzado;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,8 +22,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+
 import java.util.Objects;
 
+import static com.example.cursoavanzado.VariablesGlobales.Latitude;
+import static com.example.cursoavanzado.VariablesGlobales.Longitud;
 import static com.example.cursoavanzado.VariablesGlobales.codigoQR;
 import static com.example.cursoavanzado.VariablesGlobales.telefonodaniel;
 import static com.example.cursoavanzado.VariablesGlobales.usuariosApp;
@@ -29,7 +38,8 @@ import static com.example.cursoavanzado.metodosglobales.obtenerversionApp;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener {
 //////////////////////////////////Vistas///////////////////////////
     Toolbar mainToolbar;
     Menu menuActivity;
@@ -40,11 +50,18 @@ public class MainActivity extends AppCompatActivity {
     //Objetos
     AlertDialog acercaDedialogo;
 
+    private GoogleApiClient googleApiClient; //Cliente para la conexion de los servicios de google
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         configuracionesIniciales();
+        googleApiClient= new GoogleApiClient.Builder(context)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
     }
 
     @Override
@@ -60,6 +77,18 @@ public class MainActivity extends AppCompatActivity {
         String codigoLeido=getString(R.string.codigoescaneado)+""+codigoQR;
         txtcodigoQR.setText(codigoLeido);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        googleApiClient.connect();
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        googleApiClient.disconnect();
+        super.onStop();
     }
 
     private void configuracionesIniciales() {
@@ -112,6 +141,10 @@ ademas se iguala el menuActivity al menu de la vista inflada
             case R.id.realizarllamada:
                 realizarllamada();
                 break;
+            case R.id.mostarmapa:
+                Intent intent=new Intent(context,MapsActivity.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -136,5 +169,27 @@ ademas se iguala el menuActivity al menu de la vista inflada
         acercaDedialogo=builder.create();//se crea el cuadro de dialogo a partir del builder
         acercaDedialogo.show();//muestra cuadro de dialogo
 
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+    @SuppressLint("MissingPermission") Location userLocation= LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+    if(userLocation!=null){
+        Latitude=userLocation.getLatitude();
+        Longitud=userLocation.getLongitude();
+        Toast.makeText(context,"Latitude:"+String.valueOf(Latitude)+
+                "/ Longitude:"+String.valueOf(Longitud),Toast.LENGTH_SHORT).show();
+    }
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+    Toast.makeText(context,"Conoexion a google suspendida",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Toast.makeText(context,"Conoexion a google fallida",Toast.LENGTH_SHORT).show();
     }
 }
